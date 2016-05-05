@@ -6,7 +6,7 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class MySystem {
-	private int[] leaseDays;
+	private Moto[] motos;
 	private Set<Integer> numPlate=new HashSet<>();;
 	
 	public void showTitle() {
@@ -21,10 +21,10 @@ public class MySystem {
 		return numOfRent;
 	}
 	
-	public Moto[] rentMoto(Scanner input,int numOfRent){
-		Moto[] motos=new Moto[numOfRent];
+	public int[] rentMoto(Scanner input,int numOfRent){
+		motos=new Moto[numOfRent];
+		int[] leaseDays=new int[numOfRent];
 		String[] type={"奔驰","宝马","别克"};
-		this.leaseDays=new int[numOfRent];
 		for (int i = 0; i < motos.length; i++) {
 			System.out.println("\n租赁车型:");
 			System.out.println("\t1.轿车");
@@ -55,9 +55,9 @@ public class MySystem {
 			System.out.print("\n请输入租赁天数（>0）：");
 			leaseDays[i]=input.nextInt();
 		}
-		return motos;
+		return leaseDays;
 	}
-	public void showRentList(Moto[] motos){
+	public void showRentList(int[] leaseDays){
 		double totalPrice=0;
 		System.out.println("\n***************************");
 		System.out.println("编号\t车型\t\t车牌号\t日租金\t天数\t租金");
@@ -101,8 +101,8 @@ public class MySystem {
 		ms.showTitle();
 		Scanner input=new Scanner(System.in);
 		int numOfRent=ms.askNumOfRent(input);
-		Moto[] motos=ms.rentMoto(input,numOfRent);
-		ms.showRentList(motos);
+		int[] leaseDays=ms.rentMoto(input,numOfRent);
+		ms.showRentList(leaseDays);
 		input.close();
 	}
 
