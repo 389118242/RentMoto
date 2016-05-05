@@ -57,7 +57,7 @@ public class MySystem {
 		}
 		return motos;
 	}
-	public void showRentList(Moto[] motos,int[] leaseDays){
+	public void showRentList(Moto[] motos){
 		double totalPrice=0;
 		System.out.println("\n***************************");
 		System.out.println("编号\t车型\t\t车牌号\t日租金\t天数\t租金");
@@ -96,18 +96,13 @@ public class MySystem {
 		return "B"+result;
 	}
 	
-
-	public int[] getLeaseDays() {
-		return leaseDays;
-	}
-
 	public static void main(String[] args) {
 		MySystem ms=new MySystem();
 		ms.showTitle();
 		Scanner input=new Scanner(System.in);
 		int numOfRent=ms.askNumOfRent(input);
 		Moto[] motos=ms.rentMoto(input,numOfRent);
-		ms.showRentList(motos, ms.getLeaseDays());
+		ms.showRentList(motos);
 		input.close();
 	}
 
